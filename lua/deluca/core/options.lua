@@ -1,7 +1,9 @@
 local opt = vim.opt -- for conciseness
 
+vim.cmd("set cc=80,120")
+
 -- line numbers
-opt.relativenumber = false -- show relative line numbers
+opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
