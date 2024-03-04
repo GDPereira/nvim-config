@@ -57,6 +57,14 @@ return {
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+      if client.name == "typescript-tools" then
+        opts.desc = "Organize Imports"
+        vim.keymap.set("n", "<leader>ttp", ":TSToolsOrganizeImports <CR>", opts)
+
+        opts.desc = "Removed Unused"
+        vim.keymap.set("n", "<leader>ttru", ":TSToolsRemoveUnused <CR>", opts)
+      end
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
@@ -77,10 +85,21 @@ return {
     })
 
     -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
+    require("typescript-tools").setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
+    --
+    -- lspconfig["typescript-tools"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
+
+    -- lspconfig["tsserver"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
 
     -- configure css server
     lspconfig["cssls"].setup({
