@@ -90,17 +90,6 @@ return {
       on_attach = on_attach,
     })
 
-    --
-    -- lspconfig["typescript-tools"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- })
-
-    -- lspconfig["tsserver"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- })
-
     -- configure css server
     lspconfig["cssls"].setup({
       capabilities = capabilities,
@@ -154,6 +143,12 @@ return {
     lspconfig["pyright"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+    })
+
+    lspconfig["gopls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
     })
 
     -- configure lua server (with special settings)
