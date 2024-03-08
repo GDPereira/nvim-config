@@ -1,10 +1,11 @@
 return {
   {
-    "joshdick/onedark.vim",
+    -- "joshdick/onedark.vim",
+    "projekt0n/github-nvim-theme",
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
-      vim.cmd([[colorscheme onedark]])
+      vim.cmd([[colorscheme github_dark_dimmed]])
     end,
   },
 }

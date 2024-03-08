@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "deluca.plugins" }, { import = "deluca.plugins.lsp" } }, {
   install = {
-    colorscheme = { "onedark" },
+    colorscheme = { "github_dark_dimmed" },
   },
   checker = {
     enabled = true,
