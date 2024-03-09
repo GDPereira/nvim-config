@@ -1,0 +1,10 @@
+{
+  "Log item": {
+    "prefix": "clo",
+    "body": ["console.log(\"$1 :>> \", $1)"]
+  },
+  "Log text": {
+    "prefix": "clg",
+    "body": ["console.log(\"$1\")"]
+  }
+}
