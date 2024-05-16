@@ -1,6 +1,7 @@
 local opt = vim.opt -- for conciseness
 
 vim.cmd("set cc=80,120")
+vim.cmd("set nofixeol")
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers

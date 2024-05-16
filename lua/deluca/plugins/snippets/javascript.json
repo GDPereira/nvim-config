@@ -6,5 +6,15 @@
   "Log text": {
     "prefix": "clg",
     "body": ["console.log(\"$1\")"]
+  },
+  "Try catch": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "$1",
+      "} catch (error) {",
+      "console.log(\"error :>> \", error)",
+      "}"
+    ]
   }
 }
