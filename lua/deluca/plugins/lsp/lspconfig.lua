@@ -58,13 +58,11 @@ return {
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
-      if client.name == "typescript-tools" then
-        opts.desc = "Organize Imports"
-        vim.keymap.set("n", "<leader>ttp", ":TSToolsOrganizeImports <CR>", opts)
+      opts.desc = "Organize Imports"
+      vim.keymap.set("n", "<leader>ttp", ":TSToolsOrganizeImports <CR>", opts)
 
-        opts.desc = "Removed Unused"
-        vim.keymap.set("n", "<leader>ttru", ":TSToolsRemoveUnused <CR>", opts)
-      end
+      opts.desc = "Removed Unused"
+      vim.keymap.set("n", "<leader>ttru", ":TSToolsRemoveUnused <CR>", opts)
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
