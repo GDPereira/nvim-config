@@ -55,3 +55,18 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.diagnostic.config {
+      virtual_text = {
+        prefix = "●",
+        spacing = 2,
+      },
+      signs = true,
+      underline = true,
+      severity_sort = true,
+      update_in_insert = false,
+    }
+  end,
+})
