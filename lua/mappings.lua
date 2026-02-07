@@ -22,7 +22,10 @@ map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to n
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
+map("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+
 pcall(vim.keymap.del, "n", "<leader>n")
-pcall(vim.keymap.del, "n", "<leader>h")
+pcall(vim.keymap.del, "n", "<leader>n")
+pcall(vim.keymap.del, "n", "<leader>e")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
