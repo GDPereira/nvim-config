@@ -15,6 +15,7 @@ map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split 
 map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 map("n", "<leader>se", "<cmd>wincmd =<CR>", { desc = "Make splits equal size" }) -- make split windows equal width & height
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+map("n", "<leader>sm", "<C-w>|", { desc = "Maximize current split" })
 
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
