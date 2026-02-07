@@ -8,6 +8,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     json = { "prettier" },
+    rust = { "rustfmt" },
   },
 
   format_on_save = {
