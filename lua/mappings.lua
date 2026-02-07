@@ -9,3 +9,13 @@ map("i", "jk", "<ESC>")
 map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+local M = {}
+
+M.disabled = {
+  n = {
+    ["<leader>n"] = "",
+  }
+}
+
+return M

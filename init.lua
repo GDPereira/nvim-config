@@ -35,3 +35,23 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local arg = vim.fn.argv(0)
+
+    -- Se não tem argumento, não faz nada
+    if not arg or arg == "" then
+      return
+    end
+
+    -- Se o argumento é uma pasta
+    if vim.fn.isdirectory(arg) == 1 then
+      -- Entra na pasta
+      vim.cmd("cd " .. vim.fn.fnameescape(arg))
+
+      -- Abre o file explorer
+      require("nvim-tree.api").tree.open()
+    end
+  end,
+})
