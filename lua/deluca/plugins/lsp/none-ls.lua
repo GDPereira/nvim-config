@@ -1,5 +1,5 @@
 return {
-  "nvimtools/none-ls.nvim", -- configure formatters & linters
+  "nvimtools/none-ls.nvim",
   lazy = true,
   -- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
   dependencies = {
@@ -29,11 +29,65 @@ return {
     -- to setup format on save
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-    -- configure null_ls
+    ----------------------------------------------------------------------
+    -- FORMAT ONLY GIT-CHANGED LINES
+    ----------------------------------------------------------------------
+    local function get_git_changed_ranges(bufnr)
+      local file = vim.api.nvim_buf_get_name(bufnr)
+      if file == "" then
+        return {}
+      end
+
+      local output = vim.fn.systemlist({
+        "git",
+        "diff",
+        "--unified=0",
+        file,
+      })
+
+      local ranges = {}
+
+      for _, line in ipairs(output) do
+        -- @@ -a,b +c,d @@
+        local start, count = line:match("%+([0-9]+),?([0-9]*)")
+        if start then
+          start = tonumber(start)
+          count = tonumber(count) or 1
+
+          table.insert(ranges, {
+            start = start - 1, -- LSP uses 0-based lines
+            ["end"] = start + count - 1,
+          })
+        end
+      end
+
+      return ranges
+    end
+
+    local function format_changed_lines(bufnr)
+      local ranges = get_git_changed_ranges(bufnr)
+      if vim.tbl_isempty(ranges) then
+        return
+      end
+
+      local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+
+      for _, client in ipairs(clients) do
+        if client.name == "null-ls" and client.supports_method("textDocument/rangeFormatting") then
+          for _, range in ipairs(ranges) do
+            vim.lsp.buf.range_formatting({
+              ["start"] = { range.start, 0 },
+              ["end"] = { range["end"], 0 },
+            }, bufnr, client.id)
+          end
+        end
+      end
+    end
+
     null_ls.setup({
       -- add package.json as identifier for root (for typescript monorepos)
       root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
-      -- setup formatters & linters
+
       sources = {
         --  to disable file types use
         --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
@@ -58,13 +112,7 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.format({
-                filter = function(client)
-                  --  only use null-ls for formatting instead of lsp server
-                  return client.name == "null-ls"
-                end,
-                bufnr = bufnr,
-              })
+              format_changed_lines(bufnr)
             end,
           })
         end

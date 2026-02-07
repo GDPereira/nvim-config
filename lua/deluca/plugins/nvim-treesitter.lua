@@ -48,6 +48,7 @@ return {
           "gosum",
           "cpp",
           "rust",
+          "ron",
         },
         incremental_selection = {
           enable = true,
