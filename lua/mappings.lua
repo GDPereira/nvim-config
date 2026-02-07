@@ -24,6 +24,8 @@ map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new
 
 map("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 
+map("n", "<leader>ttp", ":TSToolsOrganizeImports <CR>")
+
 pcall(vim.keymap.del, "n", "<leader>n")
 pcall(vim.keymap.del, "n", "<leader>n")
 pcall(vim.keymap.del, "n", "<leader>e")

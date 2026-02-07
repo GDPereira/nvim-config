@@ -8,7 +8,6 @@ return {
       { "<leader>ho", desc = "Open harpoon quick menu" },
       { "<leader>hp", desc = "Go to previous harpoon mark" },
     },
-
     config = function()
       local mark = require "harpoon.mark"
       local ui = require "harpoon.ui"
