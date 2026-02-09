@@ -13,10 +13,6 @@ vim.lsp.enable(servers)
 -- TypeScript via tstools (typescript-tools.nvim)
 require("typescript-tools").setup {
   settings = {
-    tsserver_plugins = {
-      -- Exemplo: se usar styled-components ou algo similar
-      -- { name = "@styled/typescript-styled-plugin" },
-    },
     tsserver_file_preferences = {
       includeInlayParameterNameHints = "all",
       includeInlayParameterNameHintsWhenArgumentMatchesName = false,
