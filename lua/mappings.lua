@@ -26,6 +26,11 @@ map("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer
 
 map("n", "<leader>ttp", ":TSToolsOrganizeImports <CR>")
 
+map("n", "<leader>+", "<C-a>", { desc = "Increment number" })
+map("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+
+map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+
 pcall(vim.keymap.del, "n", "<leader>n")
 pcall(vim.keymap.del, "n", "<leader>n")
 pcall(vim.keymap.del, "n", "<leader>e")
