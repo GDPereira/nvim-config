@@ -6,6 +6,7 @@ local servers = {
   "tailwindcss",
   "eslint",
   "rust_analyzer",
+  "prismals",
 }
 
 vim.lsp.enable(servers)

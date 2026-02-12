@@ -30,6 +30,7 @@ return {
         "json",
         "lua",
         "rust",
+        "prisma",
       },
     },
   },
